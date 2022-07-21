@@ -1,0 +1,82 @@
+<mvc:View
+		xmlns:mvc = "sap.ui.core.mvc"
+		xmlns:html = "http://www.w3.org/1999/xhtml"
+		xmlns = "sap.uxap"
+		xmlns:core = "sap.ui.core"
+		xmlns:layout="sap.ui.layout"
+		xmlns:m = "sap.m"
+		xmlns:tnt = "sap.tnt"
+		displayBlock = "true"
+		controllerName = "e0014data.controller.Main"
+		height="100%">
+
+        <m:App>
+		<m:pages>
+			<m:Page title="" showHeader="false" enableScrolling="true"  >     
+            <m:FlexBox wrap="Wrap">       
+				<ObjectPageHeaderContent>
+                    
+					<content>
+						<m:VBox>
+								<m:ObjectStatus class="sapMObjectStatusLarge sapUiTinyMarginTopBottom" text="US01 / WC001 Press B / Machine ABCD"/>
+								<m:ObjectStatus class="sapMObjectStatusLarge sapUiTinyMarginTopBottom" text="Order: 100000089 / 0030"/>
+								<m:ObjectStatus class="sapMObjectStatusLarge sapUiTinyMarginTopBottom" text="Material: 12312132312 Roll Material ABC"/>
+							<m:HBox>
+								<m:VBox>
+									<m:ObjectStatus class="sapUiTinyMarginTopBottom sapUiLargeMarginEnd" title="Standard Text Key and Description"/>
+									<m:ObjectStatus class="sapUiTinyMarginTopBottom sapUiLargeMarginEnd" title="Schedule Start" text="Sep 8 13:00"/>
+									<m:ObjectStatus class="sapUiTinyMarginTopBottom sapUiLargeMarginEnd" title="Planned Order Yield" text="97%"/>
+									<m:ObjectStatus class="sapUiTinyMarginTopBottom sapUiLargeMarginEnd" title="Received Order Qty" text="1000 PC/2000 PC"/>
+								</m:VBox>
+								<m:VBox>
+									<m:ObjectStatus class="sapUiTinyMarginTopBottom sapUiLargeMarginBeginEnd" title="Order Qty" text="100 PC"/>
+									<m:ObjectStatus class="sapUiTinyMarginTopBottom sapUiLargeMarginBeginEnd" title="Actual Start" text="Aug 8 12:30"/>
+									<m:ObjectStatus class="sapUiTinyMarginTopBottom sapUiLargeMarginBeginEnd" title="Planned Order Scrap" text="3%"/>
+									<m:ObjectStatus class="sapUiTinyMarginTopBottom sapUiLargeMarginBeginEnd" text=""/>
+								</m:VBox>
+								<m:VBox>
+									<m:ObjectStatus class="sapUiTinyMarginTopBottom sapUiLargeMarginBeginEnd" title="Operation Qty" text="100 PC"/>
+									<m:ObjectStatus class="sapUiTinyMarginTopBottom sapUiLargeMarginBeginEnd" title="Scheduled Finish" text="Aug 8 12:30"/>
+									<m:ObjectStatus class="sapUiTinyMarginTopBottom sapUiLargeMarginBeginEnd" title="Confirmed Operation Yield" text="90 PC"/>
+									<m:ObjectStatus class="sapUiTinyMarginTopBottom sapUiLargeMarginBeginEnd" text=""/>
+								</m:VBox>
+								<m:VBox>
+									<m:ObjectStatus class="sapUiTinyMarginTopBottom sapUiLargeMarginBeginEnd" title="Production Version" text="PV Text"/>
+									<m:ObjectStatus class="sapUiTinyMarginTopBottom sapUiLargeMarginBeginEnd" title="Planned Run Time" text="150 min"/>
+									<m:ObjectStatus class="sapUiTinyMarginTopBottom sapUiLargeMarginBeginEnd" title="Confirmed Operation Scrap" text="10PC"/>
+									<m:ObjectStatus class="sapUiTinyMarginTopBottom sapUiLargeMarginBeginEnd" title="MES Integration" text="Active" state="Success"/>
+								</m:VBox>
+							</m:HBox>			
+						</m:VBox>
+					</content>
+                    
+				</ObjectPageHeaderContent> 
+               </m:FlexBox>
+              
+                <m:IconTabBar
+                    id="idIconTabBarNoIcons"
+                    expanded="{device>/isNoPhone}"
+                    class="sapUiResponsiveContentPadding"
+                    >
+                        <m:items>
+                            <m:IconTabFilter key="readiness" text="Readiness">
+                                <core:Fragment id="idReadinessFrag" fragmentName="e0014data.fragments.Readiness" type="XML" />       
+                            </m:IconTabFilter> 
+                            <m:IconTabFilter key="toolConfirmation" text="Tool Confirmation"/> 
+                            <m:IconTabFilter key="consumption" text="Production Recording">
+                                <core:Fragment fragmentName="e0014data.fragments.CompConsumption" type="XML" />
+                            </m:IconTabFilter> 
+                            <m:IconTabFilter key="oprnConfirmation" text="Operation Confirmation">
+                                <core:Fragment id="idOprnConfirmationFrag" fragmentName="e0014data.fragments.OprnConfirmation" type="XML" />
+                            </m:IconTabFilter> 
+                            <m:IconTabFilter key="corrections" text="Corrections">
+                                <core:Fragment id="idCorrectionsFrag" fragmentName="e0014data.fragments.Corrections" type="XML" />
+                            </m:IconTabFilter> 
+                            <m:IconTabFilter key="summary" text="Operation Summary"/>
+                        </m:items>
+	                </m:IconTabBar>   
+			</m:Page>
+            
+		</m:pages>
+	</m:App>
+</mvc:View>

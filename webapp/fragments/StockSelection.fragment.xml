@@ -1,0 +1,72 @@
+<core:FragmentDefinition 
+	xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    core:require="{ formatMessage: 'sap/base/strings/formatMessage' }"
+	xmlns:core="sap.ui.core">
+	<Dialog class="sapUiResponsiveContentPadding" title="{i18n>stgdInventory}" >
+    
+            <Table mode="MultiSelect"
+                inset="false" 
+                id="idStockTable"
+                items="{path: 'ConsumptionModel>/item/0/stock'}">
+                <headerToolbar>
+                    <OverflowToolbar> 
+                        <Text text="{parts:[{path:'i18n>selectStock'},{path:'MatnrModel>/Matnr'}], formatter : 'formatMessage'}"/>
+                        <ToolbarSpacer />
+                    </OverflowToolbar>
+                </headerToolbar> 
+                <columns>
+                    <Column width="auto" 
+                        minScreenWidth="Tablet" 
+                        demandPopin="true"
+                        hAlign="Center">
+                        <Text text="{i18n>location}" width="auto" />
+                    </Column>
+                    <Column width="auto" 
+                        minScreenWidth="Tablet" 
+                        demandPopin="true"
+                        hAlign="Center">
+                        <Text text="{i18n>batch}" width="auto" />
+                    </Column>
+                    <Column width="auto" 
+                        minScreenWidth="Tablet" 
+                        demandPopin="true"
+                        hAlign="Center">
+                        <Text text="{i18n>expnDate}" width="auto"/>
+                    </Column>
+                    <Column width="auto" 
+                        minScreenWidth="Tablet" 
+                        demandPopin="true"
+                        hAlign="Center">
+                        <Text text="{i18n>handlingUnit}" width="auto" />
+                    </Column>
+                    <Column width="auto" 
+                        minScreenWidth="Tablet" 
+                        demandPopin="true"
+                        hAlign="Center">
+                        <Text text="{i18n>stockQty}" width="auto" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <cells>
+                            <Text text="{ConsumptionModel>Location}"/>
+                            <Text text="{ConsumptionModel>Batch}"/>
+                            <Text text="{path:'ConsumptionModel>ExpDate'}"/>
+                            <!-- formatter:'.formatter.dateFormatter'}" -->
+                            <Text text="{ConsumptionModel>HU}"/>
+                            <Text text="{ConsumptionModel>ConQty}"/>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+        </Table>
+    <beginButton>
+        <Button text="{i18n>add}" press="onAddStock($event,${MatnrModel>/Matnr})"/>
+    </beginButton>
+    <endButton>
+        <Button text="{i18n>close}" press="onCloseDialog"/>
+    </endButton>
+      	<!-- </VBox> -->
+	</Dialog>
+</core:FragmentDefinition>

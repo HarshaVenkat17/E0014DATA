@@ -1,0 +1,141 @@
+<!--
+1. setZeroAll, 
+2. adding selected rows to main screen,
+3. + button saves data in item table,
+4. Matnr in popup, 
+5. Implement stock selection condition logic
+6. Display notification to show errors on clicking post -->
+<core:FragmentDefinition xmlns:core="sap.ui.core" 
+    xmlns="sap.m" 
+    xmlns:f="sap.ui.layout.form" 
+    xmlns:l="sap.ui.layout"
+    core:require="{ formatMessage: 'sap/base/strings/formatMessage' }">
+    <Title titleStyle="H4" text="Add Component Stock Consumption" />
+		
+    <Toolbar>
+        <Title titleStyle="H4" text="Consumption Overview and Input" /> 
+        <ToolbarSpacer />
+        <Button text="Reset Consumption Quantity" press="onReset"/>
+        <Button text="Refresh" press="onRefresh"/>
+    </Toolbar>
+    
+    <List items="{path: 'ConsumptionModel>/item'}"
+        growing="true"
+        inset="false"
+        id="idHeaderPanel"
+		growingScrollToLoad="true">
+        <items>
+            <CustomListItem > 
+                 <Panel expandable="true" expanded="true" width="auto" class="customHeaderClass sapUiResponsiveMargin">
+
+                    <headerToolbar>
+                        <OverflowToolbar  active="true" press="onOverflowToolbarPress">
+                            <Label text="{i18n>material}:"/>
+                            <Text text="{ConsumptionModel>Matnr}" wrapping="true"/>
+                            <ToolbarSpacer/>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <content>
+                        <Toolbar>
+                            <HBox class="sapUiTinyMarginTop">
+                                <Label text="{i18n>qtyRequired}: "/>
+                                <Text text="{ConsumptionModel>ReqQty} {ConsumptionModel>ReqUom}"/>
+                            </HBox>
+                            <ToolbarSpacer/>
+                            <HBox class="sapUiTinyMarginTop">
+                                <Label text="{i18n>qtyConsumed}: "/>
+                                <Text text="{ConsumptionModel>WithQty} {ConsumptionModel>WithUom}"/>
+                            </HBox>
+                            <ToolbarSpacer/>
+                            <HBox class="sapUiTinyMarginTop">
+                                <Label text="{i18n>openQuantity}: "/>
+                                <Text text="{ConsumptionModel>OpenQty} {ConsumptionModel>OpenUom}"/>
+                            </HBox>
+                            <ToolbarSpacer/>
+                            <HBox class="sapUiTinyMarginTop">
+                                <Label text="{i18n>psaStock}: "/>
+                                <Link text="{i18n>psaStock}" press="onPSAPopoverSelect(${ConsumptionModel>},${ConsumptionModel>Matnr})"/>
+                            </HBox>
+                            <ToolbarSpacer/>
+                        </Toolbar>
+
+                        <Table id="idConsumptionTable1" 
+                            growing="true"
+                            class="sapUiLargeMarginBottom"
+                            growingThreshold="5" 
+                            inset="false" 
+                            items="{path: 'ConsumptionModel>comp'}"
+                            >
+                        <headerToolbar>
+                            <OverflowToolbar>
+                                <ToolbarSpacer />
+                                <Button icon="sap-icon://add" tooltip="Add Record"  press="onAddConsumption(${ConsumptionModel>Matnr})"/>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        
+                        <columns>
+                            <Column width="auto" minScreenWidth="Tablet" demandPopin="true">
+                                <Text class="sapUiMediumMarginBegin" text="{i18n>status}" width="auto" />
+                            </Column>
+
+                            <Column width="auto" 
+                                minScreenWidth="Tablet" 
+                                demandPopin="true">
+                                <Text text="{i18n>batch}" width="auto" />
+                            </Column>
+
+                            <Column width="auto" 
+                                minScreenWidth="Tablet" 
+                                demandPopin="true">
+                                <Text text="{i18n>handlingUnit}" width="auto" />
+                            </Column>
+
+                            <Column width="auto" 
+                                minScreenWidth="Tablet" 
+                                demandPopin="true">
+                                <Text text="{i18n>expnDate}" width="auto" />
+                            </Column>  
+
+                            <Column width="auto" 
+                                minScreenWidth="Tablet" 
+                                demandPopin="true">
+                                <Text text="{i18n>bfDiff}" width="auto" />
+                            </Column>  
+
+                            <Column width="auto" 
+                                minScreenWidth="Tablet" 
+                                demandPopin="true">
+                                <Text text="{i18n>consQty}" width="auto" />
+                            </Column>  
+                        </columns>
+                            <items>   
+                                <ColumnListItem >
+                                    <cells>
+                                        <Text text="{ConsumptionModel>Status}" class="sapUiMediumMarginBegin"/> 
+                                        <Text text="{ConsumptionModel>Batch}"/>
+                                        <Text text="{ConsumptionModel>HU}"/>
+                                        <Text text="{path:'ConsumptionModel>ExpDate'}"/>
+
+                                        <!-- <Text text="{path:'ConsumptionModel>ExpDate', type: 'sap.ui.model.type.Date', formatOptions:{pattern: 'dd/MM/yyyy'}}"/> -->
+                                        <Text text="{ConsumptionModel>BfDiff}"/>     
+                                        <Input value="{ConsumptionModel>ConQty}" id="idConQtyInput" enabled="{= ${ConsumptionModel>Status} ==='PENDING' ? true : false }"/>  
+                                        <!-- {ConsumptionModel>ConUom} -->
+                                    </cells>   
+                                    
+                                </ColumnListItem>
+                            </items>
+                    </Table>
+                    
+                    <!-- <core:Fragment id="idpanelsTest" fragmentName="e0014data.fragments.MaterialData" type="XML" /> -->
+                    </content>
+                </Panel>
+            </CustomListItem>
+        </items>
+    </List>
+    <Toolbar>
+        <ToolbarSpacer/>
+        <!-- if material=X, only 1 PENDING item can be selected -->
+        <Button text="Post Consumption Confirmation"/>
+    </Toolbar>
+                    
+</core:FragmentDefinition>

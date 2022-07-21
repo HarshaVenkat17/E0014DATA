@@ -1,0 +1,101 @@
+<!-- headers as expandable panels headers-->
+<core:FragmentDefinition xmlns:core="sap.ui.core" 
+    xmlns="sap.m" 
+    xmlns:f="sap.ui.layout.form" 
+    xmlns:l="sap.ui.layout"
+    core:require="{ formatMessage: 'sap/base/strings/formatMessage' }">
+    <Title titleStyle="H4" text="Add Component Stock Consumption" />
+        <f:SimpleForm
+            maxContainerCols="5"
+            editable="true"
+            layout="ResponsiveGridLayout"
+                labelSpanL="2"
+                labelSpanM="2"
+                emptySpanL="0"
+                emptySpanM="0"
+                columnsL="5"
+                columnsM="5">
+            <f:content>
+                <VBox>
+                    <Label text="HU Number"/>
+                    <Input id="idHUInput2"/>
+                </VBox>
+                <VBox>
+                    <Label text="Batch"/>
+                    <Input id="idBatchInput2" />
+                </VBox>
+                <VBox>
+                    <Label text="Material Number"/>
+                    <Input id="idMatNoInput2" />
+                </VBox>
+                <VBox>
+                    <Label text="Consumption Quantity"/>
+                    <Input id="idConsQtyInput2" />
+                </VBox>
+                <VBox>
+                    <Label text=""/>
+                    <Button text="Add to Pending" type="Accept"/>
+                </VBox>
+            </f:content>
+        </f:SimpleForm>
+		
+    <Toolbar>
+        <Title titleStyle="H4" text="Consumption Overview and Input" /> 
+        <ToolbarSpacer/>
+        <Button text="Expand all" press="onExpandAll" />
+    </Toolbar>
+    <!-- <Title titleStyle="H4" text="Consumption Overview and Input" /> -->
+    <!-- <Button text="Expand all" press="onExpandAll" /> headerText="Consumption Overview and Input"-->
+    <List items="{path: 'ConsumptionModel1>/comp'}"
+        growing="true"
+        inset="false"
+		growingScrollToLoad="true">
+        <items>
+            <CustomListItem > 
+                <!-- <Panel expandable="true" id="idHeaderPanel" expanded="false" expand="onExpand" width="auto" backgroundDesign="Transparent" class="customHeaderClass sapUiResponsiveMargin"> -->
+                 <Panel expandable="true"  id="idHeaderPanel" expanded="true" width="auto" class="customHeaderClass sapUiResponsiveMargin">
+
+                    <headerToolbar>
+                        <OverflowToolbar  active="true" press="onOverflowToolbarPress">
+                            <Label text="{i18n>material}:"/>
+                            <Text text="{ConsumptionModel1>material}" wrapping="true" tooltip="{ConsumptionModel1>material}"/>
+                            <ToolbarSpacer/>
+                            <Label text="{i18n>pending}:"/>
+                            <Text text="{ConsumptionModel1>pending}" wrapping="true"/>
+                        </OverflowToolbar>
+                    </headerToolbar>
+                    <content>
+                        <Toolbar>
+                            <HBox class="sapUiTinyMarginTop">
+                                <Label text="{i18n>qtyRequired}:"/>
+                                <Text text="{ConsumptionModel1>qtyRequired} LBS"/>
+                            </HBox>
+                            <ToolbarSpacer/>
+                            <HBox class="sapUiTinyMarginTop">
+                                <Label text="{i18n>qtyConsumed}:"/>
+                                <Text text="{ConsumptionModel1>qtyConsumed} LBS"/>
+                            </HBox>
+                            <ToolbarSpacer/>
+                            <HBox class="sapUiTinyMarginTop">
+                                <Label text="{i18n>openQuantity}:"/>
+                                <Text text="{ConsumptionModel1>openQuantity} LBS"/>
+                            </HBox>
+                            <ToolbarSpacer/>
+                            <HBox class="sapUiTinyMarginTop">
+                                <Label text="{i18n>psaStock}:"/>
+                                <Link text="{ConsumptionModel1>psaStock}" press="handleLinkPress"/>
+                            </HBox>
+                            <ToolbarSpacer/>
+                        </Toolbar>
+                        <core:Fragment id="idpanelsTest" fragmentName="e0014data.fragments.panelsTestFrag" type="XML" />
+                    </content>
+                </Panel>
+            </CustomListItem>
+        </items>
+    </List>
+    <Toolbar>
+        <ToolbarSpacer/>
+        <Button text="Post Consumption Confirmation"/>
+    </Toolbar>
+   
+</core:FragmentDefinition>

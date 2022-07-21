@@ -1,0 +1,84 @@
+<!-- /sap/opu/odata/sap/ZGWP_PTD_MBENCH_SRV/ETS_COM_READ?$filter=Aufnr eq '11000989' and Vornr eq '0050' /sap/opu/odata/sap/ZGWP_PTD_MBENCH_SRV/ETS_COM_READ?$filter=Aufnr eq '11000989' and Vornr eq '0050' and AltQty eq 100.5 and AltUoM eq 'PC?  -->
+<!-- /sap/opu/odata/sap/ZGWP_PTD_MBENCH_SRV/ETS_COM_READ?$filter=Aufnr eq '11000989' and Vornr eq '0020'  -->
+
+<core:FragmentDefinition xmlns:table="sap.ui.table"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+
+   <smartTable:SmartTable id="idOperationSummary" entitySet="ETS_COM_READ" app:p13nDialogSettings="{group:{visible:true}}" 
+   tableType="ResponsiveTable" useExportToExcel="false" busyIndicatorDelay="0" beforeRebindTable="onBeforeRebindTable" 
+   useVariantManagement="true" requestAtLeastFields="MacCode,MacDesc,ReqQty,ReqUom,Tolerance,WithQty,WithUom,OpenQty,OpenUom,StgInv,StgUom" 
+   useTablePersonalisation="true" enableAutoBinding="true" demandPopin="true" class="sapUiResponsiveContentPadding">
+    
+        <smartTable:customToolbar>
+            <OverflowToolbar design="Transparent">
+                <HBox alignItems="Center">
+                    <Label text="Alternate Production Qty: " class="sapUiSizeCompact"/>
+                    <Input value="1000" id="idTrgQtyInput" width="200px" description="PC" class="sapUiSizeCompact"/>
+                    <Button text="Calculate Staging" class="sapUiSizeCompact"/>
+                </HBox>
+                <ToolbarSpacer/>
+                <Button icon="sap-icon://refresh" text="Refresh" tooltip="Refresh" press="onSummaryRefresh"/>
+            </OverflowToolbar>
+        </smartTable:customToolbar>
+        <Table growing="true" growingThreshold="10">
+            <columns>
+                <Column hAlign="Center">
+                    <customData>
+                        <core:CustomData key="p13nData" value='\{"columnKey": "MacCode", "sortProperty" : "MacCode", "filterProperty": "MacCode", "maxLength": "20", "columnIndex":"0", "leadingProperty": "MacCode"}'/>
+                    </customData>
+                    <Text text="Component"/>
+                </Column>
+                <Column hAlign="Center">
+                    <customData>
+                        <core:CustomData key="p13nData" value='\{"columnKey": "ReqQty", "sortProperty" : "ReqQty", "filterProperty": "ReqQty", "maxLength": "20","columnIndex":"1", "leadingProperty": "ReqQty"}'/>
+                    </customData>
+                    <Text text="Required Quantity"/>
+                </Column>
+                <Column hAlign="Center">
+                    <customData>
+                        <core:CustomData key="p13nData" value='\{"columnKey": "Tolerance", "sortProperty" : "Tolerance", "filterProperty": "Tolerance", "maxLength": "20", "columnIndex":"2", "leadingProperty": "Tolerance"}'/>
+                    </customData>
+                    <Text text="Tolerance"/>
+                </Column>
+                <Column hAlign="Center">
+                    <customData>
+                        <core:CustomData key="p13nData" value='\{"columnKey": "WithQty", "sortProperty" : "WithQty", "filterProperty": "WithQty", "maxLength": "10", "columnIndex":"3", "leadingProperty": "WithQty"}'/>
+                    </customData>
+                    <Text text="Quantity Withdrawn"/>
+                </Column>
+                <Column hAlign="Center">
+                    <customData>
+                        <core:CustomData key="p13nData" value='\{"columnKey": "OpenQty", "sortProperty" : "OpenQty", "filterProperty": "OpenQty", "maxLength": "20", "columnIndex":"4", "leadingProperty": "OpenQty" , "type" : "dateTime"}'/>
+                    </customData>
+                    <Text text="Open Quantity"/>
+                </Column>
+                <Column hAlign="Center">
+                    <customData>
+                        <core:CustomData key="p13nData" value='\{"columnKey": "StgInv", "sortProperty" : "StgInv", "filterProperty": "StgInv", "maxLength": "20", "columnIndex":"5", "leadingProperty": "StgInv" }'/>
+                    </customData>
+                    <Text text="Staged Inventory"/>
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem type="Active">
+                    <cells>
+                        <Text text="{MacCode}-{MacDesc} "/>
+                        <Text text="{ReqQty} {ReqUom}"/>
+                        <Text text="{Tolerance}"/>
+                        <Text text="{WithQty} {WithUom}"/>
+                        <Text text="{OpenQty} {OpenUom}"/>
+                        <Text text="{StgInv} {StgUom}"/>
+                    <!-- <ObjectStatus state="{parts:[{path:'StgInv'},{path:'StgUom'},{path:'Tolerance'}],formatter:'formatter.StgdInv'}" text="{parts:[{path:'StgInv'},{path:'StgUom'}]}"/> -->
+
+                        <!--<ObjectStatus state="{path:'Zzcheck',formatter:'.formatter.statusCheck'}" text="{parts:[{path:'Zzwip'},{path:'Zzcheck'}],formatter:'.formatter.emptyValue'}"/>-->
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </smartTable:SmartTable>
+
+
+</core:FragmentDefinition>

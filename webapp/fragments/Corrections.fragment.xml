@@ -1,0 +1,378 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout">
+    <VBox>
+        <Title titleStyle="H3" text="Cancel Component Consumption"/>
+        <Title titleStyle="H4" text="Consumption Overview and Input" class="sapUiTinyMargin"/>
+    </VBox>
+    <HeaderContainer id="idHeaderContainer1" showDividers="false" >
+            <Text text="Material A41 - 123312322"/>
+            <Text text="Qty Required 3000 LBS"/>
+            <Text text="Quantity consumed 500 LBS"/>
+            <Text text="Open Quantity: 2500 LBS"/>
+            <Link text="PSA Stock"/>
+    </HeaderContainer>
+   <Table id="idConsumptionTable1" 
+        growing="true"
+        class="sapUiLargeMarginBottom"
+        growingThreshold="5" 
+        inset="false" 
+        items="{path: 'ConsumptionModel1>/comp'}"
+        >
+      <columns>
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text class="sapUiMediumMarginBegin" text="{i18n>status}" width="auto" />
+         </Column>
+
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text text="{i18n>batch}" width="auto" />
+         </Column>
+
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text text="{i18n>handlingUnit}" width="auto" />
+         </Column>
+
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text text="{i18n>expnDate}" width="auto" />
+         </Column>  
+
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text text="{i18n>bfDiff}" width="auto" />
+         </Column>  
+
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text text="{i18n>consQty}" width="auto" />
+         </Column>  
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text text="{i18n>time}" width="auto" />
+         </Column> 
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text text="{i18n>user}" width="auto" />
+         </Column>  
+      </columns>
+        <items>   
+            <ColumnListItem >
+                <cells>
+                    <Text text="{ConsumptionModel1>status}"/> 
+                    <Text text="{ConsumptionModel1>batch}"/>
+                    <Text text="{ConsumptionModel1>handlingUnit}"/>
+                    <Text text="{ConsumptionModel1>expnDate}"/>
+                    <Text text="{ConsumptionModel1>bfDiff}"/>     
+                    <Text text="{ConsumptionModel1>consQty}"/>
+                    <Text text="{ConsumptionModel1>time}"/>
+                    <Text text="{ConsumptionModel1>user}"/>       
+                </cells>   
+            </ColumnListItem>
+        </items>
+   </Table>
+   
+   <Toolbar>
+        <ToolbarSpacer/>
+        <Button text="Post Cancellation"/>
+    </Toolbar>
+
+
+    <VBox>
+        <Title titleStyle="H3" text="Cancel Operation Confirmation"/>
+        <Title titleStyle="H4" text="Confirmation Overview and Input" class="sapUiTinyMargin"/>
+    </VBox>
+    <HeaderContainer id="idHeaderContainer" showDividers="false" class="sapUiTinyMarginTop">
+            <Text text="Operation yield"/>
+            <Text text="Total Yield: 300 PC"/>
+            <Text text="Total Scrap: 30 PC"/>
+    </HeaderContainer>
+   <Table id="idConfirmationTable1" 
+        growing="true"
+        class="sapUiLargeMarginBottom"
+        growingThreshold="5" 
+        inset="false" 
+        items="{path: 'ConfirmationModel1>/comp'}"
+        >
+    
+      <columns>
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text class="sapUiMediumMarginBegin" text="{i18n>status}" width="auto" />
+         </Column>
+
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text text="{i18n>yield}" width="auto" />
+         </Column>
+
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text text="{i18n>scrap}" width="auto" />
+         </Column>
+
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text text="{i18n>reasonCode}" width="auto" />
+         </Column>  
+
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text text="{i18n>batch}" width="auto" />
+         </Column>  
+
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text text="{i18n>HU}" width="auto" />
+         </Column>  
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text text="{i18n>quantity}" width="auto" />
+         </Column>  
+      </columns>
+        <items>   
+            <ColumnListItem >
+                <cells>
+                    <Text text="{ConfirmationModel1>status}"/> 
+                    <Text text="{ConfirmationModel1>yield}"/>
+                    <Text text="{ConfirmationModel1>scrap}"/>
+                    <Text text="{ConfirmationModel1>reasonCode}"/>
+                    <Text text="{ConfirmationModel1>Batch}"/>     
+                    <Text text="{ConfirmationModel1>HU}"/>
+                    <Text text="{ConfirmationModel1>quantity}"/>       
+                </cells>   
+            </ColumnListItem>
+        </items>
+   </Table>
+   <HeaderContainer id="idByProductsContainer1" showDividers="false" class="sapUiTinyMarginTop">
+            <Text text="1221234254 - ByProduct 1"/>
+            <Text text=""/>
+            <Text text=""/>
+            <Text text="Current Batch #: 5649Z99"/>
+    </HeaderContainer>
+   <Table id="idConfirmationTable2" 
+        growing="true"
+        growingThreshold="5" 
+        class="sapUiLargeMarginBottom"
+        inset="false" 
+        items="{path: 'ConfirmationModel2>/comp'}"
+        >
+     
+      <columns>
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text class="sapUiMediumMarginBegin" text="{i18n>status}" width="auto" />
+         </Column>
+
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text text="{i18n>yield}" width="auto" />
+         </Column>
+
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text text="{i18n>scrap}" width="auto" />
+         </Column>
+
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text text="{i18n>reasonCode}" width="auto" />
+         </Column>  
+
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text text="{i18n>batch}" width="auto" />
+         </Column>  
+
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text text="{i18n>HU}" width="auto" />
+         </Column>  
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text text="{i18n>quantity}" width="auto" />
+         </Column>  
+      </columns>
+        <items>   
+            <ColumnListItem >
+                <cells>
+                    <Text text="{ConfirmationModel2>status}"/> 
+                    <Text text="{ConfirmationModel2>yield}"/>
+                    <Text text="{ConfirmationModel2>scrap}"/>
+                    <Text text="{ConfirmationModel2>reasonCode}"/>
+                    <Text text="{ConfirmationModel2>Batch}"/>     
+                    <Text text="{ConfirmationModel2>HU}"/>
+                    <Text text="{ConfirmationModel2>quantity}"/>       
+                </cells>   
+            </ColumnListItem>
+        </items>
+   </Table>
+
+   <HeaderContainer id="idHeaderMaterialContainer" showDividers="false" class="sapUiTinyMarginTop">
+            <Text text="32443334 - SFG material B44"/>
+            <Text text="Total Yield: 300 PC"/>
+            <Text text="Total Scrap: 30 PC"/>
+            <Text text="Current Batch #: 5659Z86"/>
+    </HeaderContainer>
+   <Table id="idConfirmationTable3" 
+        growing="true"
+        growingThreshold="5" 
+        class="sapUiLargeMarginBottom"
+        inset="false" 
+        items="{path: 'ConfirmationModel3>/comp'}"
+        >
+     
+      <columns>
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text class="sapUiMediumMarginBegin" text="{i18n>status}" width="auto" />
+         </Column>
+
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text text="{i18n>yield}" width="auto" />
+         </Column>
+
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text text="{i18n>scrap}" width="auto" />
+         </Column>
+
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text text="{i18n>reasonCode}" width="auto" />
+         </Column>  
+
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text text="{i18n>batch}" width="auto" />
+         </Column>  
+
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text text="{i18n>HU}" width="auto" />
+         </Column>  
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text text="{i18n>quantity}" width="auto" />
+         </Column>  
+      </columns>
+        <items>   
+            <ColumnListItem >
+                <cells>
+                    <Text text="{ConfirmationModel3>status}"/> 
+                    <Text text="{ConfirmationModel3>yield}"/>
+                    <Text text="{ConfirmationModel3>scrap}"/>
+                    <Text text="{ConfirmationModel3>reasonCode}"/>
+                    <Text text="{ConfirmationModel3>Batch}"/>     
+                    <Text text="{ConfirmationModel3>HU}"/>
+                    <Text text="{ConfirmationModel3>quantity}"/>       
+                </cells>   
+            </ColumnListItem>
+        </items>
+   </Table>
+
+    <HeaderContainer id="idByProductsContainer2" showDividers="false" class="sapUiTinyMarginTop">
+            <Text text="1221234254 - By Product 1"/>
+            <Text text=" "/>
+            <Text text=" "/>
+            <Text text="Current Batch #: 5659Z99"/>
+    </HeaderContainer>
+   <Table id="idConfirmationTable4" 
+        growing="true"
+        growingThreshold="5" 
+        class="sapUiLargeMarginBottom"
+        inset="false" 
+        items="{path: 'ConfirmationModel4>/comp'}"
+        >
+     
+      <columns>
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text class="sapUiMediumMarginBegin" text="{i18n>status}" width="auto" />
+         </Column>
+
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text text="{i18n>yield}" width="auto" />
+         </Column>
+
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text text="{i18n>scrap}" width="auto" />
+         </Column>
+
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text text="{i18n>reasonCode}" width="auto" />
+         </Column>  
+
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text text="{i18n>batch}" width="auto" />
+         </Column>  
+
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text text="{i18n>HU}" width="auto" />
+         </Column>  
+         <Column width="auto" 
+            minScreenWidth="Tablet" 
+            demandPopin="true">
+            <Text text="{i18n>quantity}" width="auto" />
+         </Column>  
+      </columns>
+        <items>   
+            <ColumnListItem >
+                <cells>
+                    <Text text="{ConfirmationModel4>status}"/> 
+                    <Text text="{ConfirmationModel4>yield}"/>
+                    <Text text="{ConfirmationModel4>scrap}"/>
+                    <Text text="{ConfirmationModel4>reasonCode}"/>
+                    <Text text="{ConfirmationModel4>Batch}"/>     
+                    <Text text="{ConfirmationModel4>HU}"/>
+                    <Text text="{ConfirmationModel4>quantity}"/>       
+                </cells>   
+            </ColumnListItem>
+        </items>
+   </Table>
+   <Toolbar>
+				<ToolbarSpacer/>
+				<Button text="Post Cancellation"/>
+			</Toolbar>
+</core:FragmentDefinition>
